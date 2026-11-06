@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sneha Chowdhury | Software Engineer & AI Developer</title>
+  <meta name="description" content="Portfolio and engineering blog of Sneha Chowdhury. Computer Science & AI student building robust full-stack applications and intelligent systems.">
+  <meta name="author" content="Sneha Chowdhury">
+
+  <link rel="stylesheet" href="style.css?v=10.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Floating Admin Login Modal (Opens only when Admin Login is clicked) -->
+  <div id="login-modal" class="modal-overlay hidden">
+    <div class="modal-card auth-card">
+      <div class="gate-header">
+        <div class="brand-tag">&lt;Sneha.dev /&gt;</div>
+        <h2>Admin Authentication</h2>
+        <p class="gate-subtitle">Sign in to unlock project publishing and management permissions.</p>
+      </div>
+
+      <form id="admin-auth-form" onsubmit="handleAdminLogin(event)">
+        <div class="form-group">
+          <label for="gate-user">Username</label>
+          <input type="text" id="gate-user" placeholder="Enter admin username" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="gate-pass">Password</label>
+          <input type="password" id="gate-pass" placeholder="Enter password" required autocomplete="current-password">
+        </div>
+        <div id="gate-error" class="error-banner hidden">
+          Incorrect credentials. Returning to Guest mode.
+        </div>
+        <div class="form-btn-row">
+          <button type="button" class="btn btn-secondary" onclick="closeLoginModal()">Cancel</button>
+          <button type="submit" id="submit-login-btn" class="btn btn-primary">Sign In</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main Website: Always Loaded by Default -->
+  <div class="layout">
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="brand">
+        <a href="/" class="brand-link">
+          <span class="code-bracket">&lt;</span><span id="nav-typewriter"></span><span class="cursor">|</span><span class="code-bracket"> /&gt;</span>
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#articles">Publications</a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        
+        <!-- Toggle Buttons in Navbar -->
+        <button id="nav-login-btn" class="nav-auth-btn" onclick="openLoginModal()">Admin Login</button>
+        <button id="admin-status-badge" class="admin-badge hidden" onclick="handleLogout()" title="Click to log out">Admin Active &times;</button>
+      </nav>
+    </header>
+
+    <!-- Hero / Intro Section -->
+    <section id="about" class="hero">
+      <div class="hero-badge">Undergraduate &bull; CS &amp; AI</div>
+      
+      <h1 class="hero-title">
+        Hi, I'm <span class="highlight-text">Sneha Chowdhury</span>.<br>
+        <span id="hero-typewriter"></span><span class="cursor large-cursor">|</span>
+      </h1>
+      
+      <p class="hero-subtext">
+        I am an undergraduate pursuing a B.Tech in Computer Science and Engineering with a specialization in Artificial Intelligence at Techno India University. My primary technical interests center on full-stack web development, scalable APIs, and applied machine learning. I aspire to engineer resilient, high-performance web systems and intelligent applications that solve concrete real-world challenges.
+      </p>
+
+      <div class="hero-actions">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 6px;">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          View GitHub
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 6px;">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+          LinkedIn
+        </a>
+      </div>
+    </section>
+
+    <!-- Technical Projects Section -->
+    <section id="projects" class="section">
+      <div class="section-header-row">
+        <div>
+          <h2>Technical Projects &amp; Implementations</h2>
+          <p>Production deployments, applications, and tools.</p>
+        </div>
+        <!-- Hidden in Guest mode; Visible only when logged in -->
+        <button id="proj-publish-btn" class="btn-publish hidden" onclick="openModal('project-modal')">
+          + Publish Project
+        </button>
+      </div>
+      <div id="projects-grid" class="cards-grid">
+        <div class="loading-state">Loading projects...</div>
+      </div>
+    </section>
+
+    <!-- Engineering Publications Section -->
+    <section id="articles" class="section">
+      <div class="section-header-row">
+        <div>
+          <h2>Engineering Publications &amp; Notes</h2>
+          <p>Technical write-ups, architecture notes, and engineering logs.</p>
+        </div>
+        <!-- Hidden in Guest mode; Visible only when logged in -->
+        <button id="post-publish-btn" class="btn-publish hidden" onclick="openModal('post-modal')">
+          + Publish Publication
+        </button>
+      </div>
+      <div id="posts-container" class="posts-list">
+        <div class="loading-state">Loading publications...</div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; <span id="year"></span> Sneha Chowdhury. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Project Upload Modal -->
+  <div id="project-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <h3>Publish Technical Project</h3>
+      <form id="add-project-form" onsubmit="handleProjectSubmit(event)">
+        <div class="form-group">
+          <label>Project Title</label>
+          <input type="text" id="proj-title" placeholder="e.g. EduGUIDE" required>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea id="proj-desc" rows="4" placeholder="Detail what the application does, its architecture, and performance..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Tech Stack (comma separated)</label>
+          <input type="text" id="proj-stack" placeholder="e.g. Python, FastAPI, SQLite, Render" required>
+        </div>
+        <div class="form-group">
+          <label>GitHub Repository URL</label>
+          <input type="url" id="proj-github" placeholder="https://github.com/..." required>
+        </div>
+        <div class="form-group">
+          <label>Live Demo URL (optional)</label>
+          <input type="url" id="proj-demo" placeholder="https://...">
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('project-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Publish Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Publication Upload Modal -->
+  <div id="post-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <h3>Publish Engineering Publication / Note</h3>
+      <form id="add-post-form" onsubmit="handlePostSubmit(event)">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" id="post-title" placeholder="Publication Headline" required>
+        </div>
+        <div class="form-group">
+          <label>URL Slug (identifier)</label>
+          <input type="text" id="post-slug" placeholder="e.g. building-scalable-apis" required>
+        </div>
+        <div class="form-group">
+          <label>Category Tags</label>
+          <input type="text" id="post-tags" placeholder="e.g. Full-Stack, Machine Learning, Architecture">
+        </div>
+        <div class="form-group">
+          <label>Full Content</label>
+          <textarea id="post-content" rows="6" placeholder="Write the full publication content..." required></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('post-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Publish Note</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
